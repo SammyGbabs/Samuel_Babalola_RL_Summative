@@ -1,6 +1,6 @@
 # Indoor Navigation RL Agent - Summative Project
 
-[![Project Video]](https://drive.google.com/file/d/1spGp9PRDBwnUUeGqmQoyrbpl3z5n_hUi/view?usp=sharing)
+[Project Video](https://drive.google.com/file/d/1spGp9PRDBwnUUeGqmQoyrbpl3z5n_hUi/view?usp=sharing)
 
 A reinforcement learning project comparing Deep Q-Network (DQN) and Proximal Policy Optimization (PPO) for autonomous indoor navigation in a custom-built house environment.
 
