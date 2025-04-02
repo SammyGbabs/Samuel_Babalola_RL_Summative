@@ -42,14 +42,15 @@ Samuel_Babalola_RL_Summative/
 ├── Training/
 │   ├── dqn_training.py          # DQN training script
 │   ├── ppo_training.py          # PPO training script
-├── Models/
-│   ├── dqn/
-│   │   ├── best_model.zip       # Saved DQN model
-│   │   ├── final_model.zip      # Final trained DQN model
-│   ├── ppo/
-│   │   ├── best_model.zip       # Saved PPO model
-│   │   ├── final_model.zip      # Final trained PPO model
+├── dqn_models/
+│   ├── best_model.zip           # Saved DQN model
+│   ├── dqn_final_model.zip      # Final trained DQN model
+├── ppo_models/
+│   ├── best_model.zip           # Saved PPO model
+│   ├── ppo_final_model.zip      # Final trained PPO model
 ├── docs/                        # Report and visualizations
+│   ├── environment_preview.png
+│   ├── Final_Report.pdf
 ├── main.py                      # Main entry point
 └── requirements.txt             # Dependencies
 ```
@@ -83,11 +84,17 @@ python -m Training.dqn_training
 python -m Training.ppo_training
 ```
 
-## Visualization
-To run the trained agent with visualization:
+## Visualization  
+To run the **PPO-trained agent** with visualization:  
 ```bash
-python -m main --model-path ./Models/ppo/best_model.zip --model-type ppo --fps 2 --step-delay 0.5
-```
+python -m main --model-path ./ppo_models/best_model.zip --model-type ppo --fps 2 --step-delay 0.5
+```  
+
+To run the **DQN-trained agent**, update the default model type in `main.py` from `ppo` to `dqn` and use:  
+```bash
+python -m main --model-path ./dqn_models/best_model.zip --model-type dqn --fps 2 --step-delay 0.5
+```  
+
 **Key Features:**
 - Real-time agent movement tracking
 - Obstacle and doorway highlighting
@@ -115,6 +122,6 @@ Detailed findings are documented in **Final_Report.pdf**, including:
 This project is licensed under the **MIT License**. See the LICENSE file for details.
 
 ## Contact
-**Samuel Oluwajunwonlo Babalola**  
+**AUTHOR: Samuel Oluwajunwonlo Babalola**  
 Email: [s.babalola@alustudent.com](mailto:s.babalola@alustudent.com)  
 Submission Date: **April 1, 2025**
