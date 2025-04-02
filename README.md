@@ -119,7 +119,7 @@ Detailed findings are documented in **Final_Report.pdf**, including:
 - Optimal **γ (gamma)** value found to be **0.99** for both methods
 
 ## License
-This project is licensed under the **MIT License**. See the LICENSE file for details.
+This project is licensed under the **MIT License**. 
 
 ## Contact
 **AUTHOR: Samuel Oluwajunwonlo Babalola**  
