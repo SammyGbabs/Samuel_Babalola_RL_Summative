@@ -1,7 +1,6 @@
 # Policy-Hard, Value-Easy: Inverted Actor-Critic Asymmetry in Deep RL for Assistive Indoor Navigation
 
-[📄 Paper (Deep Learning Indaba Submission)](docs/Final_Report.pdf) · [🎥 Project Video](https://drive.google.com/file/d/1spGp9PRDBwnUUeGqmQoyrbpl3z5n_hUi/view?usp=sharing)
-
+[📄 Paper (Deep Learning Indaba 2026 Submission)](docs/DLI.pdf) ·
 This repository contains the code accompanying the paper
 *"Policy-Hard, Value-Easy: Inverted Actor-Critic Asymmetry in Deep Reinforcement Learning Based Assistive Indoor Navigation."*
 We compare **Deep Q-Network (DQN)** and **Proximal Policy Optimization (PPO)**
@@ -245,7 +244,7 @@ most promising path forward for deployable assistive navigation.
 The full paper, *"Policy-Hard, Value-Easy: Inverted Actor-Critic
 Asymmetry in Deep Reinforcement Learning Based Assistive Indoor
 Navigation,"* is available at
-[`docs/Final_Report.pdf`](docs/Final_Report.pdf). The paper's Appendix
+[`docs/DLI.pdf`](docs/DLI.pdf). The paper's Appendix
 links back to this repository for reproducibility.
 
 Key findings summarised there:
