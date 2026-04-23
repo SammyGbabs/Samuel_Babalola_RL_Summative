@@ -93,10 +93,12 @@ def visualize_agent(
         if save_frames:
             ep_dir = os.path.join(frames_dir, f"ep{ep + 1}")
             os.makedirs(ep_dir, exist_ok=True)
-            # Save the initial state as step 000
+            # Save the initial state as step 000. The renderer takes a
+            # single cell as the "goal marker" — we pass the target-room
+            # centroid, which is the most informative visual proxy.
             render_environment(
                 agent_pos=info["agent_pos"],
-                goal_pos=info["goal_pos"],
+                goal_pos=info["target_centroid"],
                 save_path=os.path.join(ep_dir, "step_000.png"),
                 dpi=200,            # 200 DPI for frames (300 is heavy for many frames)
                 show_legend=False,  # trim legend on frames for readability
@@ -121,7 +123,7 @@ def visualize_agent(
             if save_frames:
                 render_environment(
                     agent_pos=info["agent_pos"],
-                    goal_pos=info["goal_pos"],
+                    goal_pos=info["target_centroid"],
                     save_path=os.path.join(ep_dir, f"step_{step_count:03d}.png"),
                     dpi=200,
                     show_legend=False,
@@ -131,17 +133,31 @@ def visualize_agent(
                 time.sleep(step_delay)
 
         # ---- Episode summary --------------------------------------------
+        # terminated=True now covers TWO outcomes — target reached OR
+        # collision — so we disambiguate via the info-dict flags set by
+        # step() on the final transition.
         duration = time.time() - t0
-        reached = "Yes" if terminated else "No"  # terminated <=> goal reached
+        reached_target = info.get("reached_target", False)
+        collided       = info.get("collision", False)
+        if reached_target:
+            outcome = "Target reached"
+        elif collided:
+            outcome = "Collision (episode terminated)"
+        elif truncated:
+            outcome = "Timeout"
+        else:
+            outcome = "Unknown"
+
         print(f"\nEpisode {ep + 1} Results:")
-        print(f"  Goal cell        : {info['goal_pos']}")
+        print(f"  Target room      : {info['target_room']}")
         print(f"  Final position   : {info['agent_pos']}")
         print(f"  Last action      : {ACTION_NAMES[action]}")
-        print(f"  Manhattan to goal: {info['manhattan_to_goal']}")
+        print(f"  Dist to target   : {info['distance_to_target']:.2f}")
+        print(f"  Doorways passed  : {info.get('doorways_passed', 0)}")
         print(f"  Total reward     : {total_reward:+.3f}")
         print(f"  Duration (wall)  : {duration:.1f}s")
         print(f"  Steps            : {step_count}")
-        print(f"  Goal reached     : {reached}")
+        print(f"  Outcome          : {outcome}")
         if save_frames:
             print(f"  Frames saved to  : {ep_dir}/")
 
